@@ -185,41 +185,10 @@ fn delete_note(id: String) {
   }
 }
 
-fn init_db() -> Result<()> {
-  // Ouvrir la connexion à la base de données ou la créer si elle n'existe pas
-  let conn = Connection::open("notes.db")?;
-
-  // Exécuter la requête SQL pour créer la table "notes"
-  conn.execute(
-    "CREATE TABLE IF NOT EXISTS notes (
-            id INTEGER PRIMARY KEY,
-            title TEXT NOT NULL,
-            content TEXT NOT NULL,
-            date TEXT
-        )",
-    [],
-  )?;
-
-  // Retourner un résultat Ok() si tout s'est bien passé
-  Ok(())
-}
-
-
-fn create_note_sqlite(conn: &Connection, title: &str, content: &str) -> Result<(), rusqlite::Error> {
-  let now = chrono::Utc::now();
-  let date_str = now.to_rfc3339(); // Convertir la date en format texte
-
-  conn.execute(
-    "INSERT INTO notes (title, content, date) VALUES (?1, ?2, ?3)",
-    params![title, content, date_str],
-  )?;
-  Ok(())
-}
 
 fn main() {
-  init_db();
   tauri::Builder::default()
-      .invoke_handler(tauri::generate_handler![create_note, fetch_notes,update_note,delete_note,create_note_sqlite])
+      .invoke_handler(tauri::generate_handler![create_note, fetch_notes,update_note,delete_note])
       .run(tauri::generate_context!())
       .expect("erreur lors de l'exécution de l'application Tauri");
 }

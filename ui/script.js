@@ -49,7 +49,9 @@ async function addNote() {
     // Récupérer les valeurs du formulaire
     const title = document.getElementById('title').value;
     const description = document.getElementById('description').value;
-    if (id.innerText==null){
+    console.log(id.innerText)
+    if (!id.innerText){
+        console.log('ici ADD');
         // Appeler la fonction back-end pour ajouter la nouvelle note
         try {
             const { invoke } = window.__TAURI__.tauri;
@@ -64,6 +66,7 @@ async function addNote() {
         }
     }
     else{
+        console.log('ici UPD')
         const { invoke } = window.__TAURI__.tauri;
 
         // Appeler la commande back-end et récupérer les notes mises à jour
