@@ -1,14 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetchAndShowNotes(); // Appeler la fonction pour récupérer et afficher les notes dès que la page est chargée
+    fetchAndShowNotes();
+
+
+
+
 });
 
 
 const addBox = document.querySelector(".add-box")
 const popupBox = document.querySelector(".popup-box")
 
-const months =['jan' ,'feb' , 'mar', 'apr','may','jun','jul','aug','sep','oct','nov','dec']
 
-const closeBox = popupBox.querySelector("header i")
 const titleTag = popupBox.querySelector("input")
 const descTag = popupBox.querySelector("textarea")
 const addBtn = popupBox.querySelector("button")
@@ -19,15 +21,8 @@ const menuel = document.querySelector('.iconel')
 
 
 
-function showMenu(elem){
-    elem.parentElement.classList.add('show')
-    document.onclick = (e) =>{
-        if(e.target.tagName != 'I' || e.target != elem){
-            elem.parentElement.classList.remove('show')
-        }
-    }
-    // console.log(elem)
-}
+
+
 
 function editNote(noteId , title , description){
     id.innerText=noteId;
@@ -119,9 +114,10 @@ function showNotes(notes) {
 }
 
 function closeModal() {
-    const popupBox = document.querySelector(".popup-box");
     popupBox.classList.remove("show");
 }
+
+
 async function deleteNote(index) {
     try {
         const { invoke } = window.__TAURI__.tauri;
@@ -138,26 +134,3 @@ async function deleteNote(index) {
         console.error('Erreur lors de la suppression de la note:', error);
     }
 }
-
-
-
-/*async function showNotes(){
-    // Appeler la fonction back-end pour ajouter la nouvelle note
-    try {
-        const { invoke } = window.__TAURI__.tauri
-
-        // now we can call our Command!
-        // You will see "Welcome from Tauri" replaced
-        // by "Hello, World!"!
-        invoke('read_json',{})
-            // `invoke` returns a Promise
-            .then((response) => {
-                console.log(response);
-            })
-    } catch (error) {
-        console.error('Erreur lors de l\'ajout de la note:', error);
-    }
-}*/
-
-
-showNotes()
