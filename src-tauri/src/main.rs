@@ -250,6 +250,42 @@ fn get_notes() -> Result<Vec<Note>, String> {
   Ok(notes)
 }
 
+#[tauri::command]
+fn update_note_sql(title: String, content: String, id: i64) -> bool {
+  println!("update rust");
+  let conn = Connection::open("notes.db")
+      .expect("Erreur lors de l'ouverture de la connexion à la base de données");
+
+  match update_note_sql_inner(&conn, id, &title, &content) {
+    Ok(rows_affected) => rows_affected == 1,
+    Err(_) => false, // Gérer l'erreur ici, par exemple journaliser l'erreur
+  }
+}
+
+fn update_note_sql_inner(conn: &Connection, id: i64, title: &str, content: &str) -> Result<usize, rusqlite::Error> {
+  let rows_affected = conn.execute(
+    "UPDATE notes SET title = ?1, content = ?2 WHERE id = ?3",
+    params![title, content, id],
+  )?;
+  Ok(rows_affected)
+}
+
+
+#[tauri::command]
+fn delete_note_sql(id: i64) -> bool {
+  let conn = Connection::open("notes.db")
+      .expect("Erreur lors de l'ouverture de la connexion à la base de données");
+
+  match delete_note_inner(&conn, id) {
+    Ok(rows_affected) => rows_affected == 1,
+    Err(_) => false, // Gérer l'erreur ici, par exemple journaliser l'erreur
+  }
+}
+
+fn delete_note_inner(conn: &Connection, id: i64) -> Result<usize, rusqlite::Error> {
+  conn.execute("DELETE FROM notes WHERE id = ?1", params![id])
+}
+
 
 
 
@@ -274,7 +310,7 @@ fn main() -> Result<()> {
   // Lire les notes depuis la base de données
 
   tauri::Builder::default()
-      .invoke_handler(tauri::generate_handler![create_note, fetch_notes, update_note, delete_note, create_note_sqlite,get_notes])
+      .invoke_handler(tauri::generate_handler![create_note, fetch_notes, update_note, delete_note, create_note_sqlite,get_notes,update_note_sql,delete_note_sql])
       .run(tauri::generate_context!())
       .expect("erreur lors de l'exécution de l'application Tauri");
 

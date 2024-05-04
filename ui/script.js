@@ -96,7 +96,13 @@ async function addNote() {
         const { invoke } = window.__TAURI__.tauri;
 
         // Appeler la commande back-end et récupérer les notes mises à jour
-        await invoke('update_note', { id: id.innerText, newTitle: title, newContent: content });
+        const idText = id.innerText;
+
+// Transformation en entier
+        const idInteger = parseInt(idText, 10);
+
+        await invoke('update_note_sql', { id: idInteger, title: title, content: content });
+        fetchAndShowNotes();
     }
 
 
@@ -153,11 +159,11 @@ async function deleteNote(index) {
     try {
         const { invoke } = window.__TAURI__.tauri;
 
-        // Convertir l'index en chaîne de caractères
-        const id = index.toString();
+
+        console.log(index);
 
         // Appeler la commande backend pour supprimer la note avec l'ID donné
-        await invoke('delete_note', { id: id });
+        await invoke('delete_note_sql', { id:index });
 
         // Rafraîchir l'affichage des notes après la suppression
         fetchAndShowNotes();
