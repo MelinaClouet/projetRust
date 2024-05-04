@@ -24,10 +24,10 @@ const menuel = document.querySelector('.iconel')
 
 
 
-function editNote(noteId , title , description){
+function editNote(noteId , title , content){
     id.innerText=noteId;
     titleTag.value = title
-    descTag.value = description
+    descTag.value = content
     addBox.click()
 
 }
@@ -40,7 +40,7 @@ closeBox.onclick = () => {
 
 }
 
-async function addNote() {
+/*async function addNote() {
     // Récupérer les valeurs du formulaire
     const title = document.getElementById('title').value;
     const description = document.getElementById('description').value;
@@ -69,16 +69,47 @@ async function addNote() {
     }
 
 
+}*/
+
+async function addNote() {
+    // Récupérer les valeurs du formulaire
+    const title = document.getElementById('title').value;
+    const content = document.getElementById('description').value;
+    console.log(id.innerText)
+    if (!id.innerText){
+        console.log('ici ADD');
+        // Appeler la fonction back-end pour ajouter la nouvelle note
+        try {
+            const { invoke } = window.__TAURI__.tauri;
+
+            // Appeler la commande back-end et récupérer les notes mises à jour
+            const updatedNotes = await invoke('create_note_sqlite', { title: title, content: content });
+
+            // Afficher les notes mises à jour dans la page HTML
+            showNotes(updatedNotes);
+        } catch (error) {
+            console.error('Erreur lors de l\'ajout de la note:', error);
+        }
+    }
+    else{
+        console.log('ici UPD')
+        const { invoke } = window.__TAURI__.tauri;
+
+        // Appeler la commande back-end et récupérer les notes mises à jour
+        await invoke('update_note', { id: id.innerText, newTitle: title, newContent: content });
+    }
+
+
 }
 
 async function fetchAndShowNotes() {
     try {
         const { invoke } = window.__TAURI__.tauri;
 
-        // Appeler la commande backend pour récupérer toutes les notes
-        const notes = await invoke('fetch_notes');
+        // Call the backend command
+        const notes = await invoke('get_notes');
 
-        // Afficher les notes récupérées dans l'interface utilisateur
+        // Display notes in the UI
         showNotes(notes);
     } catch (error) {
         console.error('Erreur lors de la récupération des notes:', error);
@@ -95,13 +126,13 @@ function showNotes(notes) {
         let litag = `<li class="note" >
             <div class="details">
                 <p>${note.title}</p>
-                <span>${note.description}</span>
+                <span>${note.content}</span>
             </div>
             
             <div class="bottom-content">
                 <span>${note.date}</span>
                <div class="actions">
-                    <button class="btnUpdate" onclick="editNote('${note.id}', '${note.title}', '${note.description}')">Modifier</button>
+                    <button class="btnUpdate" onclick="editNote('${note.id}', '${note.title}', '${note.content}')">Modifier</button>
 
                     <button class="btnDelete" onclick="deleteNote(${note.id})">Supprimer</button>
                </div>
