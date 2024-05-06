@@ -1,9 +1,9 @@
 
 use std::fs;
 use chrono::{DateTime, Utc};
-use serde::{Serialize, Deserialize}; // Importation des traits Serialize et Deserialize
+use serde::{Serialize, Deserialize};
 use std::io::Error;
-use rusqlite::{params, Connection, Result, Error as RusqliteError}; // Renommer l'importation de rusqlite::Error
+use rusqlite::{params, Connection, Result, Error as RusqliteError};
 
 
 

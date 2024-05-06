@@ -7,11 +7,11 @@
     <cargoProject FILE="$PROJECT_DIR$/projet1/src-tauri/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7264006d-6277-438e-b3fd-4a8e64caf1e9" name="Changes" comment="[UPD] style et js">
+    <list default="true" id="7264006d-6277-438e-b3fd-4a8e64caf1e9" name="Changes" comment="[UPD] CRUD sqlite">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-tauri/notes.db" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src-tauri/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src-tauri/src/main.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-tauri/tauri.conf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src-tauri/tauri.conf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ui/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +78,8 @@
       <workItem from="1714811848969" duration="18000" />
       <workItem from="1714811895384" duration="10000" />
       <workItem from="1714812468420" duration="69000" />
+      <workItem from="1714812547170" duration="9891000" />
+      <workItem from="1714989692444" duration="994000" />
     </task>
     <task id="LOCAL-00001" summary="FIRST COMMIT">
       <option name="closed" value="true" />
@@ -103,16 +105,54 @@
       <option name="project" value="LOCAL" />
       <updated>1714054724024</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="[ADD] read sql notes">
+      <option name="closed" value="true" />
+      <created>1714816543487</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1714816543487</updated>
+    </task>
+    <task id="LOCAL-00005" summary="[ADD] update &amp; delete sql">
+      <option name="closed" value="true" />
+      <created>1714817999481</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1714817999481</updated>
+    </task>
+    <task id="LOCAL-00006" summary="[UPD] CRUD sqlite">
+      <option name="closed" value="true" />
+      <created>1714820621750</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1714820621750</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="FIRST COMMIT" />
     <MESSAGE value="[UPD] ajout note" />
     <MESSAGE value="[UPD] style et js" />
-    <option name="LAST_COMMIT_MESSAGE" value="[UPD] style et js" />
+    <MESSAGE value="[ADD] read sql notes" />
+    <MESSAGE value="[ADD] update &amp; delete sql" />
+    <MESSAGE value="[UPD] CRUD sqlite" />
+    <option name="LAST_COMMIT_MESSAGE" value="[UPD] CRUD sqlite" />
   </component>
 </project>

@@ -19,15 +19,10 @@
     <div class="popup">
         <div class="content">
             <header>
-                <p>Add a new note</p>
-                <i class="fa-solid fa-xmark"></i>
+                <p>Ajouter une nouvelle note</p>
                 <button class="modal-close" id="btnCloseModal" onclick="closeModal()">X</button>
             </header>
-
-
             <form>
-
-
                 <div class="row title">
                     <p class="id" id="id"></p>
                     <label for="title">Titre</label>
@@ -37,19 +32,18 @@
                     <label for="description">Description</label>
                     <textarea id="description" name="description"></textarea>
                 </div>
-                <button type="button" onclick="addNote()">Ajouter Note</button>
+                <button type="button" onclick="addNote()">Ajouter</button>
             </form>
         </div>
     </div>
 </div>
 <div class="wrapper">
+    <h1>Notes</h1>
     <li class="add-box">
-        <div class="icon"><i class="fa-solid fa-plus"></i></div>
-        <p>Add new note</p>
+        <div class="icon">+</div>
+        <p>Ajouter une nouvelle note</p>
     </li>
     <div id="notes-container"></div>
-    <button type="button" onclick="synchronizeWithGoogleDrive()">Synchronize with Google Drive</button>
-
 </div>
 
 <script src="script.js"></script>

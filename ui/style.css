@@ -11,6 +11,10 @@ body{
     background-color: #88abff;
 }
 
+h1{
+    text-align: center;
+}
+
 .wrapper{
     margin: 50px;
     display: grid;

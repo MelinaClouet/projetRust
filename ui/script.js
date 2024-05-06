@@ -105,6 +105,14 @@ async function addNote() {
         fetchAndShowNotes();
     }
 
+    document.getElementById('title').value = '';
+    document.getElementById('description').value = '';
+
+    // Fermer la modal
+    closeModal();
+
+    fetchAndShowNotes();
+
 
 }
 
@@ -172,23 +180,5 @@ async function deleteNote(index) {
     }
 }
 
-async function synchronizeWithGoogleDrive() {
-    try {
-        // Authentification avec Google Drive
-        const auth = await getGoogleDriveAuthToken();
 
-        // Récupération des notes depuis l'application
-        const notes = await fetchAndShowNotes()
-
-        // Envoi des notes vers Google Drive
-        await uploadNotesToGoogleDrive(auth, notes);
-
-        // Informer l'utilisateur que la synchronisation est terminée
-        alert('Synchronisation réussie avec Google Drive !');
-    } catch (error) {
-        console.error('Erreur lors de la synchronisation avec Google Drive :', error);
-        // Gérer les erreurs et informer l'utilisateur
-        alert('Une erreur est survenue lors de la synchronisation avec Google Drive.');
-    }
-}
 
