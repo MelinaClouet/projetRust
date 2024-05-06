@@ -129,7 +129,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714820621750</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="[UPD] Mise en page">
+      <option name="closed" value="true" />
+      <created>1715018049774</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715018049774</updated>
+    </task>
+    <task id="LOCAL-00008" summary="[UPD] Mise en page">
+      <option name="closed" value="true" />
+      <created>1715018106417</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1715018106417</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,6 +169,7 @@
     <MESSAGE value="[ADD] read sql notes" />
     <MESSAGE value="[ADD] update &amp; delete sql" />
     <MESSAGE value="[UPD] CRUD sqlite" />
-    <option name="LAST_COMMIT_MESSAGE" value="[UPD] CRUD sqlite" />
+    <MESSAGE value="[UPD] Mise en page" />
+    <option name="LAST_COMMIT_MESSAGE" value="[UPD] Mise en page" />
   </component>
 </project>
